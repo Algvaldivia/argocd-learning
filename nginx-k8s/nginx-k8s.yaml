@@ -1,39 +1,39 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-    name: learning-argocd
+  name: test
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: nginx-deployment
-    namespace: learning-argocd
+  name: nginx-deployment
+  namespace: test
 spec:
-    replicas: 1
-    selector:
-        matchLabels:
-            app: nginx
-    template:
-        metadata:
-            labels:
-                app: nginx
-        spec:
-            containers:
-            - name: nginx
-                image: nginx:latest
-                ports:
-                - containerPort: 80           
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80      
 ---
 apiVersion: v1
 kind: Service
 metadata:
-    name: nginx-service
-    namespace: learning-argocd
+  name: nginx-service
+  namespace: test
 spec:
-    selector:
-        app: nginx
-    ports:
-    - name: http
-      port: 80
-      targetPort: 80
-    type: ClusterIP
+  selector:
+    app: nginx
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  type: ClusterIP
