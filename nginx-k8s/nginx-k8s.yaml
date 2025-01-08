@@ -9,7 +9,7 @@ metadata:
     name: nginx-deployment
     namespace: learning-argocd
 spec:
-    replicas: 0
+    replicas: 3
     selector:
         matchLabels:
             app: nginx
